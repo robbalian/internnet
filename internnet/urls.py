@@ -4,7 +4,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns('internapp.views',
     # Examples:
     # url(r'^$', 'internnet.views.home', name='home'),
     # url(r'^internnet/', include('internnet.foo.urls')),
@@ -13,5 +13,11 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
+    
+    url(r'^$', 'index'),
+    url(r'^jobs/(?P<job_id>\d+)/$', 'detail'),
+    url(r'^jobs/(?P<job_id>\d+)/review/$', 'vote'),
+    url(r'^company/(?P<company_id>\d+)/$', 'company'),
     url(r'^admin/', include(admin.site.urls)),
+    
 )

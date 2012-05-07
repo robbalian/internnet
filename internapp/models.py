@@ -40,7 +40,7 @@ class Rating(models.Model):
     job = models.ForeignKey(Job)
     #a rating also belongs to a user
     user = models.ForeignKey(User)
-    
+    company = models.ForeignKey(Company)
     overall = models.IntegerField()
     salary = models.IntegerField()
     hours = models.IntegerField()
