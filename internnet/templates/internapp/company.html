@@ -1,0 +1,18 @@
+<h1>{{ company.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+
+<p>{{company.description}}</p>
+<p>Overall: {{overall}}</p>
+<p>Mentorship: {{mentorship}}</p>
+<p>Culture: {{culture}}</p>
+
+
+<ul>
+{% for Job in job_list %}
+    <li><a href="/jobs/{{ Job.id }}/">{{ Job.title }}</a></li>
+{% endfor %}
+</ul>
+

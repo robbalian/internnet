@@ -1,0 +1,18 @@
+<h1>{{ job.title }}</h1>
+<h2>{{ job.company }}</h2>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="/jobs/{{ job.id }}/submit/" method="post">
+{% csrf_token %}
+Overall Experience<input type="text" name="overall"/></br>
+Salary<input type="text" name="salary"/></br>
+<input type="hidden" name="jobid" value="{{job.id}}"/>
+<input type="hidden" name="companyid" value="{{job.company.id}}"/>
+Hours<input type="text" name="hours"/></br>
+Mentorship <input type="text" name="mentorship"/></br>
+Culture <input type="text" name="culture"/></br>
+Job Experience <input type="textarea" name="jobexperience"/></br>
+Company Experience <input type="textarea" name="companyexperience"/></br>
+<input type="submit" value="Vote" />
+</form>

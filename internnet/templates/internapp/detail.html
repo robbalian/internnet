@@ -1,0 +1,17 @@
+<h1>{{ job.title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+<a href="/company/{{ job.company.id }}/">{{ job.company }}</a>
+<p>{{job.description}}</p>
+<p></br></p>
+<p>Overall: {{overall}}</p>
+<p>Salary: {{salary}}</p>
+<p>Hours: {{hours}}</p>
+<p>Mentorship: {{mentorship}}</p>
+<p>Culture: {{culture}}</p>
+
+<a href="/jobs/{{ job.id }}/review">Review This Job</a></li>
+
+
