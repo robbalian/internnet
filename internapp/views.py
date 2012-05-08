@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render_to_response, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from internapp.models import Job, User, Rating, Company
+from internapp.models import Job, User, Rating, Company, RatingForm
 from django.db.models import Avg
 
 def index(request):
@@ -28,7 +28,14 @@ def company(request, company_id):
     culture = Rating.objects.filter(company_id=company_id).aggregate(Avg('culture'))
     return render_to_response('internapp/company.html', {'company': p, 'job_list': job_list, 'overall': overall, 'mentorship': mentorship, 'culture': culture}, context_instance=RequestContext(request))
     
-def vote(request, job_id):
+def review(request, job_id):
     p = get_object_or_404(Job, pk=job_id)
-    return render_to_response('internapp/vote.html', {'job': p})
+    if request.method == 'POST':
+        form = RatingForm(request.POST) #form bound to POST data
+        if form.is_valid():
+            return HttpResponseRedirect(reverse('job_detail', args=(job_id,)))
+        #else we return the bound form (prolly with errors)
+    else:
+        form = RatingForm()
     
+    return render_to_response('internapp/review.html', {'job': p, 'form':form}, RequestContext(request))

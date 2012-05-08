@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
     
@@ -63,3 +64,8 @@ class Preference(models.Model):
     
     def __unicode__(self):
         return self.type
+        
+class RatingForm(ModelForm):
+    class Meta:
+        model = Rating
+        exclude = ('job', 'company', 'user', 'upvotes', 'downvotes')

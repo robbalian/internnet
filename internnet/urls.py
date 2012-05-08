@@ -15,8 +15,8 @@ urlpatterns = patterns('internapp.views',
     # Uncomment the next line to enable the admin:
     
     url(r'^$', 'index'),
-    url(r'^jobs/(?P<job_id>\d+)/$', 'detail'),
-    url(r'^jobs/(?P<job_id>\d+)/review/$', 'vote'),
+    url(r'^jobs/(?P<job_id>\d+)/$', 'detail', name='job_detail'),
+    url(r'^jobs/(?P<job_id>\d+)/review/$', 'review'),
     url(r'^company/(?P<company_id>\d+)/$', 'company'),
     url(r'^admin/', include(admin.site.urls)),
     

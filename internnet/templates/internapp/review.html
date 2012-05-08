@@ -1,0 +1,17 @@
+<center>
+<h1>{{ job.title }}</h1>
+<h2>{{ job.company }}</h2>
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="/jobs/{{ job.id }}/review/" method="post">{% csrf_token %}
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }}<br /> {{ field }}
+        </div>
+    {% endfor %}
+    <p><input type="submit" value="Send message" /></p>
+</form>
+</center>
