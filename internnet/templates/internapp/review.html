@@ -1,3 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ job.title }}{% endblock %}
+
+{% block external %} 
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+$(function() {
+       $("#slider").slider();
+//alert("hi");
+
+});
+</script>
+
+<style>
+	#demo { 
+	padding: 10px; 
+	
+	}
+	
+	#slider { margin: 10px;}
+	</style>
+{% endblock %}
+
+{% block maincontent %}
+
 <center>
 <h1>{{ job.title }}</h1>
 <h2>{{ job.company }}</h2>
@@ -5,6 +30,9 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
+<div id="demo">
+<div id="slider"></div>
+</div>
 <form action="/jobs/{{ job.id }}/review/" method="post">{% csrf_token %}
     {% for field in form %}
         <div class="fieldWrapper">
@@ -15,3 +43,4 @@
     <p><input type="submit" value="Send message" /></p>
 </form>
 </center>
+{% endblock %}

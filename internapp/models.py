@@ -1,5 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
+from django import forms
 
 # Create your models here.
     
@@ -69,3 +70,6 @@ class RatingForm(ModelForm):
     class Meta:
         model = Rating
         exclude = ('job', 'company', 'user', 'upvotes', 'downvotes')
+        widgets = {
+        #'salary':forms.IntegerField(attrs={'class':'Slider', 'readonly':'true'})
+        }

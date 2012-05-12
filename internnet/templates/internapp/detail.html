@@ -1,7 +1,10 @@
-<h1>{{ job.title }}</h1>
+{% extends "base.html" %}
+{% block title %}{{ job.title }}{% endblock %}
 
+{% block external %} {% endblock %}
+
+{% block maincontent %}
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
 
 <a href="/company/{{ job.company.id }}/">{{ job.company }}</a>
 <p>{{job.description}}</p>
@@ -14,4 +17,4 @@
 
 <a href="/jobs/{{ job.id }}/review">Review This Job</a></li>
 
-
+{% endblock %}
